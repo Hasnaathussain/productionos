@@ -13,8 +13,8 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 20
           cache: npm
@@ -28,7 +28,7 @@ jobs:
       - run: npm run release:check
       - run: mkdir -p release-artifacts && npm pack --pack-destination release-artifacts
       - run: sha256sum release-artifacts/*.tgz > release-artifacts/SHA256SUMS
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: productionos-release
           path: release-artifacts/*
