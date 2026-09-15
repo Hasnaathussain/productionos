@@ -7,9 +7,10 @@ npm install
 npm test
 npm run build
 node dist/apps/cli/src/main.js --version
+npm run agent:check
 ```
 
-After building the benchmark and demo, `npm run release:check` performs a deterministic local release audit. It fails on missing artifacts, an invalid compiled policy surface, an out-of-range control catalog, or unhealthy benchmark results; licensing and remote workflow execution are reported as human-gated advisories.
+After building the benchmark and demo, `npm run release:check` performs a deterministic local release audit. It fails on missing artifacts, an invalid compiled policy surface, an out-of-range control catalog, or unhealthy benchmark results. The hosted-workflow result remains an advisory because a local command cannot prove what happened on GitHub.
 
 Run the CLI against a local target with `--root`. `init` creates `.productionos/`; `inspect` reads the target without executing its application; `audit` evaluates relevant controls; `verify` creates evidence; `gate` applies the manifest profile.
 
@@ -26,3 +27,5 @@ Run `prodos slo` to generate capability-triggered service objectives, including 
 For a compact agent-facing explanation, run `prodos explain SEC-AUTHZ-001 --agent --json`; it returns the control rationale, failure modes, tradeoffs, evidence requirements, affected-file hints, constraints, and the next verification command without the full human report.
 
 Use `prodos context --task "fix checkout" --json` to select controls from the task wording. Matching is deterministic and expands a small vocabulary for checkout, login, upload, invitation, and AI work.
+
+See [`AGENT-COMPATIBILITY.md`](AGENT-COMPATIBILITY.md) for installation and live smoke-test instructions for portable skills, Gemini CLI, Cursor, Claude Code, and Codex.

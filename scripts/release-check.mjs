@@ -31,7 +31,10 @@ const requiredFiles = [
   "policies/control.schema.json",
   "README.md",
   "LICENSE",
+  "docs/AGENT-COMPATIBILITY.md",
+  "docs/READINESS.md",
   ".github/workflows/ci.yml",
+  ".github/workflows/codeql.yml",
   ".github/workflows/release.yml",
   "dist/apps/cli/src/main.js"
 ];
@@ -45,7 +48,7 @@ check("architecture-decision-records", adrCount >= 5, `${adrCount} ADR files fou
 
 try {
   const packageJson = JSON.parse(await readFile(join(root, "package.json"), "utf8"));
-  check("package-version", packageJson.version === "0.1.0", `version=${packageJson.version ?? "missing"}`);
+  check("package-version", packageJson.version === "0.1.1", `version=${packageJson.version ?? "missing"}`);
   check("package-cli-bin", packageJson.bin?.prodos === "dist/apps/cli/src/main.js", `bin=${packageJson.bin?.prodos ?? "missing"}`);
   const publicationMetadata = packageJson.private !== true && packageJson.license === "Apache-2.0" && Boolean(packageJson.repository?.url);
   check("package-publication-metadata", publicationMetadata, `private=${packageJson.private ?? false}, license=${packageJson.license ?? "missing"}`);
@@ -75,7 +78,13 @@ try {
   check("benchmark-results", false, error instanceof Error ? error.message : String(error));
 }
 
-advisories.push({ name: "remote-workflow", status: "REMOTE_VERIFICATION_REQUIRED", detail: "The checked-in GitHub CI workflow must complete on the hosting platform after publication." });
+advisories.push({
+  name: "remote-workflow",
+  status: process.env.GITHUB_ACTIONS === "true" ? "RUNNING_IN_HOSTED_WORKFLOW" : "NOT_CHECKED_LOCALLY",
+  detail: process.env.GITHUB_ACTIONS === "true"
+    ? `This release audit is running inside GitHub Actions (run ${process.env.GITHUB_RUN_ID ?? "unknown"}); inspect the workflow result for the hosted outcome.`
+    : "A local release audit cannot prove the hosted workflow result; inspect the repository's latest GitHub Actions run before publishing a release."
+});
 
 const report = {
   schemaVersion: 1,

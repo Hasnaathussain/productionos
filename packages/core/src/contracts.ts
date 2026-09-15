@@ -1,5 +1,5 @@
 export const TOOL_NAME = "ProductionOS";
-export const TOOL_VERSION = "0.1.0";
+export const TOOL_VERSION = "0.1.1";
 export const MANIFEST_VERSION = 1 as const;
 export const STATE_SCHEMA_VERSION = 1 as const;
 export const DISCOVERY_SCHEMA_VERSION = 1 as const;

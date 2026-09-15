@@ -1,6 +1,6 @@
 # ProductionOS Architecture
 
-**Status:** Release-candidate architecture for the local-first v0.1 engine; hosted and high-risk execution features remain outside this release.
+**Status:** Public v0.1 architecture for the local-first engine; hosted and high-risk execution features remain outside this release.
 
 ## Design objective
 

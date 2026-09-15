@@ -17,7 +17,7 @@ This roadmap turns the master build directive into executable milestones. Each m
 | 10 | ProductionBench | Measured detection, false-positive, remediation, verification, invalidation, and regression report |
 | 11 | Reproducible flawed demo | Demo commands execute and output is evidence-backed |
 | 12 | OSS/docs polish | README, guides, security, privacy, contribution, CI/release docs |
-| 13 | v0.1 release candidate | Clean install, tests, CI, real controls, evidence, demo, benchmark |
+| 13 | v0.1 public release | Clean install, tests, CI, real controls, evidence, demo, benchmark |
 
 ## Per-subsystem decision record
 

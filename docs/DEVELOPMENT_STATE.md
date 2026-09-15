@@ -1,7 +1,7 @@
 # ProductionOS Development State
 
 **Last updated:** 2026-09-15 (Asia/Karachi)
-**Current milestone:** Phase 13 — public v0.1.0 release
+**Current milestone:** Phase 13 — public v0.1.1 release hardening
 **State:** PUBLISHED
 
 ## Completed
@@ -12,7 +12,7 @@
 - Researched adjacent analysis engines, repository-health tooling, and portable agent skills; notes and source links are in `docs/RESEARCH.md`.
 - Established the npm-workspace TypeScript monorepo, strict compiler configuration, CLI entry point, and CI workflow.
 - Implemented versioned manifest parsing, durable `.productionos` state, bounded repository snapshots, deterministic discovery, capability graph construction, policy evaluation, evidence fingerprints, static/test verification, and profile-aware gate reporting.
-- Added flawed Next.js/Prisma/Stripe/OpenAI, safe upload, backup-described, migration-unsafe, flawed agentic, and safe-agent fixtures, a minimal Next.js fixture, and 52 deterministic tests covering strict manifest typing, manifest inference, supported alternate provider adapters, dynamic route and handler discovery, operational integration signals, native external-fetch boundaries, graph, policy, migration-risk boundaries, backup-readiness fields, signal-specific control boundaries, adjacent-signal false positives, authorization false-positive boundaries, evidence invalidation, policy-version invalidation, gate behavior, upload boundaries, package-manager-aware test execution, task-specific context selection, current-failure preservation, control-specific test evidence, remediation preconditions, evidence conflict handling, waiver validation, agent permissions, local load measurement, redirect safety, conservative simplification, SLO reporting, compact agent context, and CLI execution.
+- Added flawed Next.js/Prisma/Stripe/OpenAI, safe upload, backup-described, migration-unsafe, flawed agentic, and safe-agent fixtures, a minimal Next.js fixture, and 53 deterministic tests covering strict manifest typing, manifest inference, supported alternate provider adapters, dynamic route and handler discovery, operational integration signals, native external-fetch boundaries, graph, policy, migration-risk boundaries, backup-readiness fields, signal-specific control boundaries, adjacent-signal false positives, authorization false-positive boundaries, evidence invalidation, policy-version invalidation, gate behavior, upload boundaries, package-manager-aware test execution, task-specific context selection, current-failure preservation, control-specific test evidence, remediation preconditions, evidence conflict handling, waiver validation, agent permissions, local load measurement, redirect safety, conservative simplification, SLO reporting, compact agent context, and CLI execution.
 - Verified clean `npm ci --ignore-scripts`, `npm run typecheck`, `npm run build`, `npm test`, fixture `inspect`, fixture `audit`, fixture `verify --run-tests`, and fixture `gate`.
 - Added a versioned requirement graph (schema 3) with explicit control evidence, failure-mode, and tradeoff metadata, TypeScript AST discovery facts, strict manifest unknown-field rejection, an initial policy catalog, a thin progressive agent skill, and the first benchmark runner.
 - Added a plan-first remediation package and CLI path with one preconditioned low-risk Next.js security-header fix; unsupported fixes remain explicit plans.
@@ -21,7 +21,7 @@
 - Added conservative `prodos simplify` advice with dependency/infrastructure review candidates, a no-action result, and no mutation path.
 - Separated backup configuration, restore documentation, and restore-test discovery signals so `OPS-BACKUP-001` cannot treat backup wording as recovery proof.
 - Added `prodos slo` and the operations package for configured-or-unspecified availability, latency, authentication, payment, and job SLO objectives that never masquerade as runtime evidence.
-- Revalidated the release candidate after the evidence, manifest, control-contract, policy-boundary, context, waiver, dynamic-route, operational-signal, backup-runbook, SLO, migration-risk, alternate-provider, authorization-boundary, native-fetch, and explain-contract changes: clean lockfile install, 52/52 tests, typecheck/build, formatting, audit, benchmark, demo, release audit, workflow YAML parsing, and clean-prefix packed-tarball CLI smoke all pass locally.
+- Revalidated the public release after the evidence, manifest, control-contract, policy-boundary, context, waiver, dynamic-route, operational-signal, backup-runbook, SLO, migration-risk, alternate-provider, authorization-boundary, native-fetch, and explain-contract changes: clean lockfile install, 53/53 tests, typecheck/build, formatting, audit, benchmark, demo, release audit, workflow YAML parsing, and clean-prefix packed-tarball CLI smoke all pass locally.
 - Corrected evidence integrity so changed control versions stale old proof and gate verification counts exclude stale evidence; regression coverage now includes both cases.
 - Extended the evidence listing path to apply the same control-version freshness check, so `prodos evidence` and `prodos gate` cannot disagree about old proof.
 - Made the current policy catalog version an explicit freshness input, so persisted old findings cannot keep old evidence fresh until a new audit is run.
@@ -48,10 +48,14 @@
 - Created the public GitHub repository at `https://github.com/Hasnaathussain/productionos`, pushed commit `993a414`, enabled Dependabot security updates and secret-scanning push protection, and added project discovery topics.
 - Observed the GitHub CI run for `993a414` succeed, then tagged and released `v0.1.0`; the remote release workflow passed and its npm tarball plus SHA-256 checksum are attached to the GitHub release.
 - Updated the checked-in GitHub Actions to the current Node-24-native major versions and observed the follow-up `main` CI run succeed without the prior action-runtime deprecation warning.
+- Added strict CLI option validation and a regression test for the corrected help surface.
+- Added `npm run agent:check`, which validates the portable skill and exercises safe/flawed CLI workflows; live model-backed agent sessions remain intentionally outside deterministic CI.
+- Added `docs/AGENT-COMPATIBILITY.md` and `docs/READINESS.md` so installation, live smoke testing, marketing claims, and product limitations are explicit.
+- Added a read-only CodeQL workflow for JavaScript/TypeScript analysis and bumped the package/CLI to v0.1.1 for these release-hardening changes.
 
 ## Currently working
 
-- No release-blocking work remains for v0.1.0.
+- No release-blocking work remains for v0.1.1.
 - Keeping package/install behavior reproducible; future fixture additions must carry their own benchmark contract.
 
 ## Architecture
@@ -67,6 +71,7 @@ Local-first TypeScript monorepo. The CLI orchestrates pure discovery, graph, pol
 - The benchmark currently contains six fixtures and measures detection/false-positive behavior plus one remediation, one control-specific test verification, and one deliberate regression; runtime probes and broader remediation metrics are not implemented.
 - Control-specific test evidence is available when test filenames include a stable control ID; project-wide test passes remain project evidence only.
 - The npm package has not been published to the npm registry; users can clone the repository or download the attached GitHub release artifact.
+- Live model-backed sessions for Gemini CLI, Cursor, Claude Code, and Codex have not been invoked by CI; the compatibility harness reports local CLI availability and the manual matrix records the remaining environment-specific check.
 
 ## Next milestones
 

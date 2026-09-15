@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 - 2026-09-15
+
+- Corrected CLI help rendering so terminal output contains real line breaks and added actionable unknown-option errors.
+- Added a deterministic portable-skill and multi-agent compatibility harness covering safe and intentionally flawed repository workflows without invoking model providers.
+- Added the agent compatibility guide, release-readiness assessment, and CodeQL workflow for the TypeScript/JavaScript codebase.
+- Revalidated the public-file boundary, secret-pattern scan, dependency audit, benchmark, demo, release audit, and packed package surface.
+
+## 0.1.0 - 2026-09-14
 
 - Added the strict TypeScript monorepo and local `prodos` CLI.
 - Added versioned manifest validation, durable state, discovery, AST facts, capability/requirement graphs, initial controls, evidence fingerprints, verification, waivers, gates, agent skill references, fixtures, and benchmark execution.

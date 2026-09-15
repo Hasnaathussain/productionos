@@ -28,9 +28,18 @@ function runCliAsync(args: string[]): Promise<{ status: number | null; stdout: s
 test("CLI exposes a runnable help surface", () => {
   const result = spawnSync(process.execPath, [cli, "help"], { cwd: repositoryRoot, encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
+  assert.doesNotMatch(result.stdout, /\\n/);
+  assert.ok(result.stdout.split(/\r?\n/).length > 20);
   assert.match(result.stdout, /inspect\s+Detect stack/);
   assert.match(result.stdout, /gate\s+Apply profile policy/);
   assert.match(result.stdout, /load\s+Measure an explicitly authorized loopback endpoint/);
+});
+
+test("CLI rejects unknown options with an actionable error", () => {
+  const result = spawnSync(process.execPath, [cli, "status", "--not-a-real-option"], { cwd: repositoryRoot, encoding: "utf8" });
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /Unknown option '--not-a-real-option'/);
+  assert.match(result.stderr, /prodos help/);
 });
 
 test("CLI initializes, inspects, and emits compact JSON status", async () => {

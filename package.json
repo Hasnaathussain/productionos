@@ -1,6 +1,6 @@
 {
   "name": "productionos",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Evidence-driven production engineering for AI coding agents.",
   "license": "Apache-2.0",
   "author": "Hasnaat Hussain",
@@ -36,9 +36,9 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && node scripts/run-tests.mjs",
-    "test:unit": "npm run build && node scripts/run-tests.mjs",
     "benchmark": "npm run build && node benchmarks/run.mjs",
     "demo": "npm run build && node examples/run-demo.mjs",
+    "agent:check": "npm run build && node scripts/check-skill.mjs",
     "release:check": "node scripts/release-check.mjs",
     "security:check": "node scripts/public-audit.mjs",
     "cli": "node dist/apps/cli/src/main.js",

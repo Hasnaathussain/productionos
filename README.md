@@ -10,7 +10,7 @@ intent -> discovery -> capabilities -> requirements -> verification -> evidence 
 
 ## What works today
 
-The current pre-release engine supports a TypeScript/Next.js-centered workflow with:
+The v0.1 engine supports a TypeScript/Next.js-centered workflow with:
 
 - versioned `.productionos/manifest.yaml` and durable local state;
 - deterministic package, route, environment, configuration, middleware/operational-integration, and TypeScript AST discovery;
@@ -32,6 +32,7 @@ npm install
 npm test
 npm run build
 npm run demo
+npm run agent:check
 
 node dist/apps/cli/src/main.js init --root path/to/your-app
 node dist/apps/cli/src/main.js inspect --root path/to/your-app
@@ -41,6 +42,10 @@ node dist/apps/cli/src/main.js gate --root path/to/your-app
 ```
 
 The repository is the source distribution for the CLI. A published npm package will expose the same interface as `npx productionos` when a package release is made.
+
+For portable agent use, read [`docs/AGENT-COMPATIBILITY.md`](docs/AGENT-COMPATIBILITY.md). `npm run agent:check` validates the skill package and CLI contract without invoking a model or uploading source.
+
+For an honest release assessment, see [`docs/READINESS.md`](docs/READINESS.md). It explains what this release can justify, where it is intentionally narrow, and which claims should wait for later evidence.
 
 ## Try the measured fixture
 

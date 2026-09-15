@@ -2,7 +2,7 @@
 
 This report is a measured snapshot of the checked-in benchmark cases. It is intentionally narrow and must not be read as a general accuracy claim.
 
-**Generated:** 2026-09-14 (Asia/Karachi)
+**Generated:** 2026-09-15 (Asia/Karachi)
 **Command:** `npm run benchmark`
 **Scope:** deterministic discovery, inspection, audit, one remediation contract, one test-verification contract, evidence invalidation, and one deliberate regression
 

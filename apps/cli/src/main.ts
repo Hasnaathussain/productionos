@@ -36,6 +36,9 @@ interface ParsedArgs {
   values: Map<string, string>;
 }
 
+const VALUE_OPTIONS = new Set(["root", "task", "url", "requests", "concurrency", "method", "body", "timeout"]);
+const FLAG_OPTIONS = new Set(["json", "quiet", "verbose", "agent", "force", "apply", "run-tests", "allow-local", "relevant", "ci", "version", "help"]);
+
 function parseArgs(argv: string[]): ParsedArgs {
   let command = "help";
   let commandFound = false;
@@ -57,8 +60,14 @@ function parseArgs(argv: string[]): ParsedArgs {
     }
     const [rawName, inlineValue] = token.slice(2).split("=", 2);
     const name = rawName as string;
-    if (inlineValue !== undefined) values.set(name, inlineValue);
-    else if (["root", "task", "url", "requests", "concurrency", "method", "body", "timeout"].includes(name)) {
+    if (!name) throw new ProductionOSError("ARGUMENT", "Options must include a name, for example --json.");
+    if (!VALUE_OPTIONS.has(name) && !FLAG_OPTIONS.has(name)) {
+      throw new ProductionOSError("ARGUMENT", `Unknown option '--${name}'. Run 'prodos help' to see supported options.`);
+    }
+    if (inlineValue !== undefined) {
+      if (!VALUE_OPTIONS.has(name)) throw new ProductionOSError("ARGUMENT", `Flag '--${name}' does not accept a value.`);
+      values.set(name, inlineValue);
+    } else if (VALUE_OPTIONS.has(name)) {
       const value = rest[index + 1];
       if (!value || value.startsWith("--")) throw new ProductionOSError("ARGUMENT", `--${name} requires a value.`);
       values.set(name, value);
@@ -494,7 +503,7 @@ function help(): string {
     "  --allow-local        Explicitly authorize loopback load measurement",
     "  --ci                 CI-compatible flag (gate still returns non-zero when blocked)",
     "  --version            Print the version"
-  ].join("\\n");
+  ].join("\n");
 }
 
 async function run(args: ParsedArgs): Promise<void> {
@@ -522,8 +531,17 @@ async function run(args: ParsedArgs): Promise<void> {
   }
 }
 
-const args = parseArgs(process.argv.slice(2));
-run(args).catch((error: unknown) => {
+let args: ParsedArgs;
+try {
+  args = parseArgs(process.argv.slice(2));
+} catch (error: unknown) {
+  const productionError = error instanceof ProductionOSError ? error : new ProductionOSError("ARGUMENT", error instanceof Error ? error.message : String(error));
+  console.error(`ProductionOS error [${productionError.code}]\n${productionError.message}`);
+  process.exitCode = productionError.exitCode;
+  args = { command: "help", positional: [], flags: new Set(), values: new Map() };
+}
+
+if (process.exitCode === undefined) run(args).catch((error: unknown) => {
   const productionError = error instanceof ProductionOSError ? error : new ProductionOSError("UNEXPECTED", error instanceof Error ? error.message : String(error));
   if (wantsJson(args)) console.error(JSON.stringify({ error: productionError.code, message: productionError.message }));
   else console.error(`ProductionOS error [${productionError.code}]\n${productionError.message}`);
