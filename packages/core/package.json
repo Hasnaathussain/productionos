@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/core",
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "broken-nextjs-saas",
+    "fixture": "fixtures/nextjs-saas",
+    "expectedFailed": [
+      "SEC-AUTHZ-001",
+      "SEC-WEBHOOK-001",
+      "AI-INPUT-001",
+      "PAY-VALIDATE-001"
+    ],
+    "expectedNotApplicable": [
+      "SEC-UPLOAD-001",
+      "SEC-UPLOAD-002"
+    ],
+    "verification": {
+      "runTests": true,
+      "expectedTestVerified": ["SEC-SECRET-001"]
+    },
+    "remediation": {
+      "controlId": "SEC-HEADERS-001",
+      "expectedStatus": "STATICALLY_VERIFIED"
+    },
+    "regression": {
+      "controlId": "SEC-HEADERS-001",
+      "file": "middleware.ts",
+      "content": "export function middleware() { return new Response(null, { status: 200 }); }\n",
+      "expectedStatus": "FAILED",
+      "requiresStaleEvidence": true
+    }
+  },
+  {
+    "name": "minimal-nextjs",
+    "fixture": "fixtures/minimal-next",
+    "expectedFailed": [],
+    "expectedNotApplicable": [
+      "SEC-WEBHOOK-001",
+      "COST-AI-001",
+      "SEC-UPLOAD-001",
+      "PAY-VALIDATE-001"
+    ]
+  },
+  {
+    "name": "agentic-next",
+    "fixture": "fixtures/agentic-next",
+    "expectedFailed": ["AI-TOOL-001"],
+    "expectedNotApplicable": ["SEC-UPLOAD-001", "SEC-UPLOAD-002", "SEC-WEBHOOK-001", "PAY-VALIDATE-001"]
+  },
+  {
+    "name": "upload-safe",
+    "fixture": "fixtures/upload-safe",
+    "expectedFailed": [],
+    "expectedNotApplicable": ["SEC-WEBHOOK-001", "PAY-VALIDATE-001", "COST-AI-001", "AI-TOOL-001"]
+  },
+  {
+    "name": "migration-unsafe",
+    "fixture": "fixtures/migration-unsafe",
+    "expectedFailed": ["DB-MIGRATION-001"],
+    "expectedNotApplicable": ["SEC-WEBHOOK-001", "PAY-VALIDATE-001", "COST-AI-001", "AI-TOOL-001", "SEC-UPLOAD-001", "SEC-UPLOAD-002"]
+  },
+  {
+    "name": "external-api-unsafe",
+    "fixture": "fixtures/external-api-unsafe",
+    "expectedFailed": ["REL-TIMEOUT-001", "REL-RETRY-001", "SEC-SSRF-001"],
+    "expectedNotApplicable": ["SEC-WEBHOOK-001", "PAY-VALIDATE-001", "COST-AI-001", "AI-TOOL-001", "SEC-UPLOAD-001", "SEC-UPLOAD-002"]
+  }
+]

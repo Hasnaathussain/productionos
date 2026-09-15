@@ -1,0 +1,10 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Document {
+  id        String @id
+  tenantId  String
+  createdAt DateTime @default(now())
+}

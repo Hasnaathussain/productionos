@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/reporting",
+  "private": true,
+  "type": "module"
+}

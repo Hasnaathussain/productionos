@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/state",
+  "private": true,
+  "type": "module"
+}

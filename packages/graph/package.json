@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/graph",
+  "private": true,
+  "type": "module"
+}

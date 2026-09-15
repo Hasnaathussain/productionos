@@ -1,0 +1,7 @@
+{
+  "name": "backup-described",
+  "private": true,
+  "dependencies": {
+    "@prisma/client": "^6.0.0"
+  }
+}

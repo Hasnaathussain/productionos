@@ -1,0 +1,7 @@
+{
+  "name": "external-api-unsafe",
+  "private": true,
+  "dependencies": {
+    "next": "15.0.0"
+  }
+}

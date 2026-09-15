@@ -1,0 +1,16 @@
+node_modules/
+dist/
+fixtures/**/.productionos/
+.productionos/
+coverage/
+.DS_Store
+Thumbs.db
+*.log
+*.tsbuildinfo
+*.tgz
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+/AGENTS.md

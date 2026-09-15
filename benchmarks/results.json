@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T15:09:42.521Z",
+  "cases": [
+    {
+      "name": "broken-nextjs-saas",
+      "detected": 4,
+      "expected": 4,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 29,
+      "remediation": {
+        "expected": 1,
+        "detected": 1,
+        "missed": []
+      },
+      "verification": {
+        "expected": 1,
+        "detected": 1,
+        "missed": []
+      },
+      "regression": {
+        "expected": 1,
+        "detected": 1,
+        "missed": [],
+        "staleEvidence": true
+      }
+    },
+    {
+      "name": "minimal-nextjs",
+      "detected": 0,
+      "expected": 0,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 3,
+      "remediation": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "verification": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "regression": {
+        "expected": 0,
+        "detected": 0,
+        "missed": [],
+        "staleEvidence": false
+      }
+    },
+    {
+      "name": "agentic-next",
+      "detected": 1,
+      "expected": 1,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 22,
+      "remediation": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "verification": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "regression": {
+        "expected": 0,
+        "detected": 0,
+        "missed": [],
+        "staleEvidence": false
+      }
+    },
+    {
+      "name": "upload-safe",
+      "detected": 0,
+      "expected": 0,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 18,
+      "remediation": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "verification": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "regression": {
+        "expected": 0,
+        "detected": 0,
+        "missed": [],
+        "staleEvidence": false
+      }
+    },
+    {
+      "name": "migration-unsafe",
+      "detected": 1,
+      "expected": 1,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 7,
+      "remediation": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "verification": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "regression": {
+        "expected": 0,
+        "detected": 0,
+        "missed": [],
+        "staleEvidence": false
+      }
+    },
+    {
+      "name": "external-api-unsafe",
+      "detected": 3,
+      "expected": 3,
+      "missed": [],
+      "falsePositive": [],
+      "activeControls": 14,
+      "remediation": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "verification": {
+        "expected": 0,
+        "detected": 0,
+        "missed": []
+      },
+      "regression": {
+        "expected": 0,
+        "detected": 0,
+        "missed": [],
+        "staleEvidence": false
+      }
+    }
+  ],
+  "totals": {
+    "detected": 9,
+    "expected": 9,
+    "missed": 0,
+    "falsePositive": 0,
+    "remediationDetected": 1,
+    "remediationExpected": 1,
+    "remediationMissed": 0,
+    "verificationDetected": 1,
+    "verificationExpected": 1,
+    "verificationMissed": 0,
+    "regressionDetected": 1,
+    "regressionExpected": 1,
+    "regressionMissed": 0,
+    "staleEvidenceChecks": 1
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/manifest",
+  "private": true,
+  "type": "module"
+}

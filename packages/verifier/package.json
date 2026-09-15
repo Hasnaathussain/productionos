@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/verifier",
+  "private": true,
+  "type": "module"
+}

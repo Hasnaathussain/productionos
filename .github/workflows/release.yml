@@ -1,0 +1,34 @@
+name: Release artifact
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm audit --omit=dev
+      - run: npm run security:check
+      - run: npm run format:check
+      - run: npm test
+      - run: npm run benchmark
+      - run: npm run demo
+      - run: npm run release:check
+      - run: mkdir -p release-artifacts && npm pack --pack-destination release-artifacts
+      - run: sha256sum release-artifacts/*.tgz > release-artifacts/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: productionos-release
+          path: release-artifacts/*

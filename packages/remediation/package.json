@@ -1,0 +1,5 @@
+{
+  "name": "@productionos/remediation",
+  "private": true,
+  "type": "module"
+}

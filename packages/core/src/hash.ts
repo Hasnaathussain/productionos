@@ -1,0 +1,12 @@
+import { createHash } from "node:crypto";
+
+export function sha256(value: string | Buffer): string {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+export function stableJson(value: unknown): string {
+  return JSON.stringify(value, (_key, nested) => {
+    if (!nested || typeof nested !== "object" || Array.isArray(nested)) return nested;
+    return Object.fromEntries(Object.entries(nested).sort(([left], [right]) => left.localeCompare(right)));
+  });
+}
