@@ -1,6 +1,6 @@
 # ProductionOS launch materials
 
-These are drafts for review. Nothing in this file has been published.
+The repository and v0.1.0 release are public. The copy below remains maintained draft launch material unless separately published.
 
 ## Positioning
 

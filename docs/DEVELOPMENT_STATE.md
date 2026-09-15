@@ -1,8 +1,8 @@
 # ProductionOS Development State
 
 **Last updated:** 2026-09-15 (Asia/Karachi)
-**Current milestone:** Phase 13 — public release
-**State:** RELEASE CANDIDATE
+**Current milestone:** Phase 13 — public v0.1.0 release
+**State:** PUBLISHED
 
 ## Completed
 
@@ -45,10 +45,12 @@
 - Extended external-API discovery to recognize native `fetch` only when its target is an explicit HTTPS URL or environment variable, with a regression fixture proving internal relative fetches do not activate the boundary.
 - Added `npm run release:check`, a deterministic Phase 13 audit for required artifacts, compiled CLI/policy versions, complete control explanation/evidence metadata, control-count bounds, benchmark health, and explicit licensing/remote-workflow advisories.
 - Selected Apache-2.0, added the canonical license and package publication metadata, excluded local maintainer instructions from the public tree, and added a deterministic public-file and secret-pattern audit.
+- Created the public GitHub repository at `https://github.com/Hasnaathussain/productionos`, pushed commit `993a414`, enabled Dependabot security updates and secret-scanning push protection, and added project discovery topics.
+- Observed the GitHub CI run for `993a414` succeed, then tagged and released `v0.1.0`; the remote release workflow passed and its npm tarball plus SHA-256 checksum are attached to the GitHub release.
 
 ## Currently working
 
-- Completing the initial public GitHub publication and observing the checked-in CI workflow.
+- No release-blocking work remains for v0.1.0.
 - Keeping package/install behavior reproducible; future fixture additions must carry their own benchmark contract.
 
 ## Architecture
@@ -63,11 +65,11 @@ Local-first TypeScript monorepo. The CLI orchestrates pure discovery, graph, pol
 - The current static policy catalog uses deterministic source signals; AST-level analysis and richer test-to-control mapping remain future work.
 - The benchmark currently contains six fixtures and measures detection/false-positive behavior plus one remediation, one control-specific test verification, and one deliberate regression; runtime probes and broader remediation metrics are not implemented.
 - Control-specific test evidence is available when test filenames include a stable control ID; project-wide test passes remain project evidence only.
-- CI and release workflows are checked in but have not run on a remote GitHub worker in this environment.
+- The npm package has not been published to the npm registry; users can clone the repository or download the attached GitHub release artifact.
 
 ## Next milestones
 
-1. Observe the initial GitHub CI run and resolve only reproducible failures.
+1. Accept and evaluate community feedback against deterministic reproduction cases.
 2. Expand benchmark fixtures and add new verification/remediation metrics only as their contracts become real.
 3. Keep attack/chaos modes, external load testing, and hosted features outside v0.1 until their safety and evidence contracts are implemented.
 
