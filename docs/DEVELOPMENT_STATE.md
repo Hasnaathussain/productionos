@@ -47,6 +47,7 @@
 - Selected Apache-2.0, added the canonical license and package publication metadata, excluded local maintainer instructions from the public tree, and added a deterministic public-file and secret-pattern audit.
 - Created the public GitHub repository at `https://github.com/Hasnaathussain/productionos`, pushed commit `993a414`, enabled Dependabot security updates and secret-scanning push protection, and added project discovery topics.
 - Observed the GitHub CI run for `993a414` succeed, then tagged and released `v0.1.0`; the remote release workflow passed and its npm tarball plus SHA-256 checksum are attached to the GitHub release.
+- Updated the checked-in GitHub Actions to the current Node-24-native major versions and observed the follow-up `main` CI run succeed without the prior action-runtime deprecation warning.
 
 ## Currently working
 
